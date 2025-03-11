@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://captcha.sati.ac/js/integration.js"></script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> 
+
+    <div class="sign">
+      <div class="content">
+        <h2>Присоединиться</h2>
+        <div class="integration">
+          <a href="https://oauth.yandex.ru/authorize?client_id={{ya_client_id}}&response_type=code" target="_blank">
+            <img src="{{ url_for('static', filename='images/yandex.png') }}" alt="Войти через Яндекс" class="social-icon-yandex">
+          </a>
+        </div>
+        <div class="form">
+          <div class="inputBox">
+            <input type="text" required>
+            <i>Имя пользователя</i>
+          </div>
+
+          <div class="inputBox">
+            <input type="email" required>
+            <i>Email</i>
+          </div>
+
+          <div class="inputBox">
+            <input type="password" required>
+            <i>Пароль</i>
+          </div>
+
+          <hr class="hr-shelf">
+
+          <div class="captcha" id="captcha" style="text-align: center;"></div>
+
+          <div class="inputBox">
+            <input type="submit" value="Регистрация">
+          </div>
+          <a href="/auth" class="redirect-a">Авторизация</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function renderCaptcha() {
+        HatCaptcha.mount({
+          target: '#captcha', // селектор элемента, либо сам элемент внутри которого должна быть капча
+          siteKey: '3_RoJy3EUjfQ6GXB8LErzfH-4oyEYthzczVx64kgGc8', // ваш паблик кей
+          callback: (token) => {
+            tokenKey = token
+          },
+          language: 'ru', // язык капчи, либо en, либо ru, либо, при auto, капча сама определит язык. по умолчанию auto
+          invisible: false // или false, если видимая капча. при invisible не нужно указывать target
+        })
+      };
+    window.addEventListener('DOMContentLoaded', function() {
+      renderCaptcha();
+    });
+  </script>
+  
+</body>
+</html>
