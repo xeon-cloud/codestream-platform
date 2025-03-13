@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+	font-family: 'JB-Thin';
+	src: url(/static/fonts/JetBrainsMonoNL-Thin.ttf);
+}
+
+@font-face {
+	font-family: 'JB-Bold';
+	src: url(/static/fonts/JetBrainsMonoNL-Bold.ttf);
+}
+
 *
 {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'JB-Thin';
 }
+
 body 
 {
 	display: flex;
@@ -14,6 +26,12 @@ body
 	min-height: 130vh;
 	background: rgb(3, 3, 37);
 }
+
+h2
+{
+    font-family: 'JB-Bold'
+}
+
 section 
 {
 	position: absolute;
